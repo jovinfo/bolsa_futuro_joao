@@ -1,0 +1,17 @@
+1. Crie um programa que solicite ao usuário o preço de três produtos e calcule o valor total da compra.
+
+2. Desenvolva um programa que peça o ano de nascimento do usuário e o ano atual, e então calcule e exiba a idade do usuário.
+
+3. Escreva um programa que peça uma palavra ao usuário e um número inteiro, e então imprima a palavra repetida o número de vezes informado.
+
+4. Crie um programa que solicite o valor total de uma conta de restaurante e o número de pessoas para dividir a conta. Calcule e exiba o valor que cada pessoa deve pagar.
+
+5. Desenvolva um programa que peça ao usuário para inserir as notas de três provas e calcule a média aritmética dessas notas.
+
+6. Escreva um programa que peça o peso (em kg) e a altura (em metros) de uma pessoa e calcule o seu Índice de Massa Corporal (IMC), usando a fórmula: IMC = peso / (altura ** 2).
+
+7. Crie um programa que receba um número total de segundos e o converta para horas, minutos e segundos, exibindo o resultado.
+
+8. Crie um programa que solicite o preço de um produto e um percentual de desconto. Calcule e exiba o novo preço do produto após aplicar o desconto.
+
+9. Escreva um programa que o usuário defina a quantidade de dias, horas, minutos e segundos em variáveis. Calcule e exiba o total de segundos resultantes da soma de todas as variáveis.
