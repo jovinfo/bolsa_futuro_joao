@@ -3,35 +3,58 @@
 #imports
 from pprint import pprint
 
+""""
+Dúvidas:
+Ex1
+key=lambda item: item[1]
+ordenado = sorted(contagem.items(), key=lambda item: item[1], reverse=True)
+
+"""
+
 # 1. Crie um programa que leia um arquivo texto chamado 'dados.txt' e conte quantas vezes cada palavra aparece no arquivo. Exiba o resultado em ordem decrescente de frequência.
-# Dica: Use o módulo collections.Counter para contar as palavras. Lembre-se de remover pontuação e normalizar para minúsculas antes de contar. Para ordenar, utilize o método most_common().
+# Lembre-se de remover pontuação e normalizar para minúsculas antes de contar.
 
 from unicodedata import normalize,category
-#Partindo da inicialização da pasta main (/bolsa_futuro_joao)
-with open(r'./estudos_pessoal/dados.txt', 'r', encoding='utf-8') as file:
-    txt = file.read()
 
-txt = txt.lower().replace('ç', '@')
-# txt = txt.strip(".:;/'\"(){}[]ºª*#,") #Só funciona no inicio e final, ou removendo espaços
-txt_final = ''
-txt_norm = normalize('NFD', txt)
+def remover_pontuacao(txt:str):
+    #TODO HACK Descobrir como desfazer essa gambiarra
+    txt = txt.lower().replace('ç', '@')
+    txt_final = ''
+    txt_norm = normalize('NFD', txt)
 
-for c in txt_norm:
-    """
-    Mais sobre em https://www.unicode.org/reports/tr44/#General_Category_Values
-    Lu:Uppercase Letter
-    Ll:Lowercase Letter
-    Nd:Decimal Number
-    Mn:Nonspacing Mark
-    Zs:Space Separator
-    Po:Other Punctuation
-    """
-    if category(c) != 'Mn':
-        txt_final += c
-txt_final = txt_final.replace('@', 'ç')
-pprint(txt_final)
+    for c in txt_norm:
+        """
+        Mais sobre em https://www.unicode.org/reports/tr44/#General_Category_Values
+        Lu:Uppercase Letter
+        Ll:Lowercase Letter
+        Nd:Decimal Number
+        Mn:Nonspacing Mark
+        Zs:Space Separator
+        Po:Other Punctuation
+        """
+        if category(c) != 'Mn':
+            txt_final += c
+    txt_final = txt_final.replace('@', 'ç')
+    return txt_final
 
+def ex1():
+    #Partindo da inicialização da pasta main (/bolsa_futuro_joao)
+    with open(r'./estudos_pessoal/dados.txt', 'r', encoding='utf-8') as file:
+        text = file.read()
+    txt = remover_pontuacao(text)
 
+    contagem = {}
+    palavras = txt.split(' ')
+    palavras = [palavra.strip(",.") for palavra in palavras]
+    for palavra in palavras:
+        if palavra in contagem:
+            contagem[palavra] += 1
+        else: contagem[palavra] = 1
+
+    #TODO ordenado = sorted(contagem.items(), key=lambda item: item[1], reverse=True)
+    inverso = [(quant, plv) for (plv, quant) in contagem.items()]
+    ordenado = sorted(inverso, reverse=True)
+    pprint([(plv, quant) for (quant, plv) in ordenado if quant > 1])
 
 # 2. Implementea função que recebe um dicionário onde as chaves são nomes de alunos e os valores são listas de notas. Retorne um novo dicionário com a m umédia de cada aluno e indique quais alunos estão acima da média geral da turma.
 
