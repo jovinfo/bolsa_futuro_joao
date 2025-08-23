@@ -56,10 +56,31 @@ def ex1():
     ordenado = sorted(inverso, reverse=True)
     pprint([(plv, quant) for (quant, plv) in ordenado if quant > 1])
 
-# 2. Implementea função que recebe um dicionário onde as chaves são nomes de alunos e os valores são listas de notas. Retorne um novo dicionário com a m umédia de cada aluno e indique quais alunos estão acima da média geral da turma.
+# 2. Implementea função que recebe um dicionário onde as chaves são nomes de alunos e os valores são listas de notas. Retorne um novo dicionário com a média de cada aluno e indique quais alunos estão acima da média geral da turma.
+alunos_notas = {
+    'Ana': [8.5, 7.0, 9.0],
+    'Bruno': [6.0, 5.5, 7.0],
+    'Carla': [9.5, 8.0, 10.0],
+    'Daniel': [7.0, 6.5, 8.0],
+    'Eduarda': [10.0, 9.5, 9.0]
+}
 
-# 3. Escreva um programa que simule um sistema de cadastro de produtos. O usuário pode adicionar, remover e listar produtos (nome, preço e quantidade) usando um menu interativo. Os dados devem ser salvos em um arquivo JSON.
-# Dica: Utilize o módulo json para salvar e carregar os dados. Implemente funções separadas para adicionar, remover e listar produtos. Use um loop while para o menu e trate possíveis erros de entrada do usuário.
+def comparar_medias(dados:dict[str,list[float]]) -> dict[str,float]:
+    for pessoa, notas in dados.items():
+        dados[pessoa] = sum(notas)/len(notas)
+    return dados
+
+def ex2():
+    dados = comparar_medias(alunos_notas)
+    media_turma = sum(dados.values())/len(dados)
+    
+    for aluno, media in dados.items():
+        if media > media_turma:
+            print(f'{aluno} está acima da média da turma')
+
+# 3. Escreva um programa que simule um sistema de cadastro de produtos. O usuário pode adicionar, remover e listar produtos (nome, preço e quantidade). Os dados devem ser salvos em um arquivo JSON.
+# Dica: Utilize o módulo json para salvar e carregar os dados.
+class Cadastro():
 
 # 4. Crie uma função recursiva para calcular o fatorial de um número, mas que também imprima cada chamada recursiva feita.
 # Dica: Imprima o valor de n a cada chamada da função. Lembre-se de definir o caso base corretamente (n == 0 ou n == 1). Teste sua função com diferentes valores de n para observar o fluxo recursivo.
