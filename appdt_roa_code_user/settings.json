@@ -1,0 +1,29 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.iconTheme": "vscode-icons",
+    "files.autoSave": "afterDelay",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "editor.minimap.enabled": false,
+    "python.defaultInterpreterPath": "c:\\Users\\victo\\Área de Trabalho\\CODE PYTHON\\VirtEnvPadrao\\Scripts\\python.exe",
+    "workbench.startupEditor": "none",
+    "python.terminal.focusAfterLaunch": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "files.associations": {
+        "*.db": "sqlite"
+    },
+    "[db]": {
+
+    },
+    "explorer.confirmDelete": false,
+    "gutterpreview.imagePreviewMaxHeight": 500,
+    "gutterpreview.imagePreviewMaxWidth": 500,
+    "gutterpreview.enableReferenceLookup": true,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "explorer.confirmDragAndDrop": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.wordWrap": "on"
+}
