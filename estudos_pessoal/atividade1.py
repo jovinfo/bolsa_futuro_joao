@@ -6,17 +6,31 @@ from pprint import pprint
 # 1. Crie um programa que leia um arquivo texto chamado 'dados.txt' e conte quantas vezes cada palavra aparece no arquivo. Exiba o resultado em ordem decrescente de frequência.
 # Dica: Use o módulo collections.Counter para contar as palavras. Lembre-se de remover pontuação e normalizar para minúsculas antes de contar. Para ordenar, utilize o método most_common().
 
-from unicodedata import normalize
+from unicodedata import normalize,category
 #Partindo da inicialização da pasta main (/bolsa_futuro_joao)
 with open(r'./estudos_pessoal/dados.txt', 'r', encoding='utf-8') as file:
     txt = file.read()
 
-txt = txt.lower()
+txt = txt.lower().replace('ç', '@')
 # txt = txt.strip(".:;/'\"(){}[]ºª*#,") #Só funciona no inicio e final, ou removendo espaços
-target = normalize('NFD', txt)
-print(target)
+txt_final = ''
+txt_norm = normalize('NFD', txt)
 
-# pprint(txt)
+for c in txt_norm:
+    """
+    Mais sobre em https://www.unicode.org/reports/tr44/#General_Category_Values
+    Lu:Uppercase Letter
+    Ll:Lowercase Letter
+    Nd:Decimal Number
+    Mn:Nonspacing Mark
+    Zs:Space Separator
+    Po:Other Punctuation
+    """
+    if category(c) != 'Mn':
+        txt_final += c
+txt_final = txt_final.replace('@', 'ç')
+pprint(txt_final)
+
 
 
 # 2. Implementea função que recebe um dicionário onde as chaves são nomes de alunos e os valores são listas de notas. Retorne um novo dicionário com a m umédia de cada aluno e indique quais alunos estão acima da média geral da turma.
