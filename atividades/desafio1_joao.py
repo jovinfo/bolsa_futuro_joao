@@ -182,10 +182,15 @@ def converter_temp(unidade_final, valor):
         res = (valor * 9/5) + 32
         return f'Temperatura {valor} °C convertida em Fahrenhheit é de {res} °F'
     else:
-        return 'Erro, tente novamente'
-    
-print('Conversor de temperaturas! Escolha a unidade de medida destino da conversão')
-print('Digite \'C\' ou \'Celsius\' para converter de Fahrenheit para Celsius')
-final = input('Digite \'F\' ou \'Fahrenhheit\' para converter de Celsius para Fahrenheit: ').lower()
-temp_inicial = float(input('Insira a sua temperatura inicial: '))
-print(converter_temp(final, temp_inicial))
+        return None
+
+while True:
+    print('Conversor de temperaturas! Escolha a unidade de medida destino da conversão')
+    print('Digite \'C\' ou \'Celsius\' para converter de Fahrenheit para Celsius')
+    final = input('Digite \'F\' ou \'Fahrenhheit\' para converter de Celsius para Fahrenheit: ').lower()
+    temp_inicial = float(input('Insira a sua temperatura inicial: '))
+    if converter_temp(final, temp_inicial) is None:
+        print('Escolha uma opção válida!')
+    else:
+        print(converter_temp(final, temp_inicial))
+        break
