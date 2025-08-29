@@ -8,7 +8,7 @@
 
 print('Conversor de temperaturas')
 
-while False: #mudar
+while False: #TODO XXX
     print('Escolha a sua opção:')
     escolha = input('Digite 1 para converter de Fahrenheit para Celsius\nDigite 2 para converter de Celsius para Fahrenheit: ')
     if escolha == '1':
@@ -72,10 +72,11 @@ F - Sair do programa.
 
 #TODO HACK criando estoque fora só pra pylance parar de encher
 estoque:dict[str, float] = {}
+#TODO Adicionar elifs em vez de ifs já que as condições são unicas e excludentes
 #TODO Implementar funções para refatorar codigo repetido
 criado = False
-while True:
-    escolha = input(f"Escolha a sua opção de \'A\' - \'F\'\n{str_opcoes}").lower()
+while False: #TODO XXX
+    escolha = input(f"\nEscolha a sua opção de \'A\' - \'F\'\n{str_opcoes}").lower()
     print('')
     if escolha in ['a','b','c','d','e','f']:
         if escolha == 'a':
@@ -155,7 +156,7 @@ while True:
             else:
                 if len(estoque) > 0:
                     print(f'O seu estoque final é de:')
-                    for prod, qtd in estoque:
+                    for prod, qtd in estoque.items():
                         print(f'O produto \'{prod}\' tem {qtd} no estoque')
                 else:
                     print("Primeiro você deve escolher a opção 'B' para criar um produto no estoque")
@@ -166,10 +167,25 @@ while True:
     
     else:
         print(f'Opção \'{escolha}\' inválida')
-        
 
 
 # 4- Crie uma função baseada na premissa do exercício número 1, os parâmetros a serem recebidos devem ser:
 # A - Unidade de medida destino da conversão.
 # B - Valor a ser convertido.
 # O retorno da função deve ser o valor calculado na conversão.
+
+def converter_temp(unidade_final, valor):
+    if unidade_final == 'c' or unidade_final == 'celsius':
+        res = (valor - 32) * 5/9
+        return f'Temperatura {valor} °F convertida em Celsius é de {res} °C'
+    elif unidade_final == 'f' or unidade_final == 'fahrenhheit':
+        res = (valor * 9/5) + 32
+        return f'Temperatura {valor} °C convertida em Fahrenhheit é de {res} °F'
+    else:
+        return 'Erro, tente novamente'
+    
+print('Conversor de temperaturas! Escolha a unidade de medida destino da conversão')
+print('Digite \'C\' ou \'Celsius\' para converter de Fahrenheit para Celsius')
+final = input('Digite \'F\' ou \'Fahrenhheit\' para converter de Celsius para Fahrenheit: ').lower()
+temp_inicial = float(input('Insira a sua temperatura inicial: '))
+print(converter_temp(final, temp_inicial))
