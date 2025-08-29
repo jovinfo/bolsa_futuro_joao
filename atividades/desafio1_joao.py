@@ -72,7 +72,7 @@ F - Sair do programa.
 
 #TODO HACK criando estoque fora só pra pylance parar de encher
 estoque:dict[str, float] = {}
-
+#TODO Implementar funções para refatorar codigo repetido
 criado = False
 while True:
     escolha = input(f"Escolha a sua opção de \'A\' - \'F\'\n{str_opcoes}").lower()
@@ -123,19 +123,50 @@ while True:
                         consulta = input(f"Esse nome de produto '{consulta}' não existe!" \
                                     "\nDigite o nome do produto que deseja consultar: ").lower()
                     print(f'O produto \'{consulta}\' tem {estoque[consulta]} no estoque.')
-        #TODO testar o codigo de A,B e C
+                else:
+                    print("Primeiro você deve escolher a opção 'B' para criar um produto no estoque")
 
         if escolha == 'd':
-            pass
+            if not criado:
+                print("Primeiro você deve escolher a opção 'A' para criar o estoque")
+            else:
+                nomes = estoque.keys()
+                if len(nomes) > 0:
+                    print('Os produtos que temos cadastrados são:')
+                    for produto in nomes:
+                        print(produto)
+                    alterar = input('Digite o nome do produto que deseja alterar a quantidade: ').lower()
+                    while alterar not in nomes:
+                        print('Os produtos que temos cadastrados são:')
+                        for produto in nomes:
+                            print(produto)
+                        alterar = input(f"Esse nome de produto '{alterar}' não existe!" \
+                                    "\nDigite o nome do produto que deseja alterar: ").lower()
+                    print(f'O produto \'{alterar}\' tem {estoque[alterar]} no estoque.')
+                    nova_qtd = float(input(f'Qual seria a nova quantidade do produto \'{alterar}\'? '))
+                    estoque[alterar] = nova_qtd
+                    print(f'O produto \'{alterar}\' foi atualizado e agora tem {estoque[alterar]} no estoque.')
+                else:
+                    print("Primeiro você deve escolher a opção 'B' para criar um produto no estoque")
+
+        if escolha == 'e':
+            if not criado:
+                print("Primeiro você deve escolher a opção 'A' para criar o estoque")
+            else:
+                if len(estoque) > 0:
+                    print(f'O seu estoque final é de:')
+                    for prod, qtd in estoque:
+                        print(f'O produto \'{prod}\' tem {qtd} no estoque')
+                else:
+                    print("Primeiro você deve escolher a opção 'B' para criar um produto no estoque")
+
+        if escolha == 'f':
+            print('Você escolheu sair, o programa será finalizado!')
+            break
     
     else:
         print(f'Opção \'{escolha}\' inválida')
-
-
-
-
-else:
-    print('Escolha inválida, tente novamente:')
+        
 
 
 # 4- Crie uma função baseada na premissa do exercício número 1, os parâmetros a serem recebidos devem ser:
