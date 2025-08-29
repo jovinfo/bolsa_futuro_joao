@@ -62,68 +62,74 @@ print(f'A média das temperaturas da lista é de: {media}')
 # F- Sair do programa.
 # O usuário deve continuar vendo o menu e podendo fazer operações até que selecione uma opção de saída do programa.
 
-str_opcoes = """A- Criar o estoque
-B- Adicionar itens utilizando o nome do item e a quantidade.
-C- Consultar um item, utilizando o nome do produto.
-D- Atualizar a quantidade em estoque de um item.
-E- Exibir o estoque final.
-F- Sair do programa.
+str_opcoes = """A - Criar o estoque
+B - Adicionar itens utilizando o nome do item e a quantidade.
+C - Consultar um item, utilizando o nome do produto.
+D - Atualizar a quantidade em estoque de um item.
+E - Exibir o estoque final.
+F - Sair do programa.
 """
 
 #TODO HACK criando estoque fora só pra pylance parar de encher
 estoque:dict[str, float] = {}
 
 criado = False
-escolha = input(f"Escolha a sua opção de \'A\' - \'F\'\n{str_opcoes}").lower()
-if escolha in ['a','b','c','d','e','f']:
-    if escolha == 'a':
-        if not criado:
-            estoque = {}
-            criado = True
-            print("Estoque foi criado")
-        else:
-            print("Opção inválida, o estoque já existe")
-    
-    if escolha == 'b':
-        if not criado:
-            print("Primeiro você deve escolher a opção 'A' para criar o estoque")
-        else:
-            # try:
-            #     x = input()
-            #     estoque.items()
-            # except NameError:
-            #     print("Primeiro você deve escolher a opção 'A' para criar o estoque")
-            # else:
-            #     pass
-            prod_nome = input("Insira o nome do produto a ser criado:").lower()
-            while prod_nome in estoque.keys():
-                prod_nome = input(f"Esse nome de produto '{prod_nome}' já existe" \
-                                  "\nInsira o nome de um #NOVO# produto para ser criado:").lower()
-            prod_quant = float(input(f"Insira a quantidade de {prod_nome} que tem no estoque"))
-            #produtos podem ser medidos em unidades de peso, não sao inteiros
-            estoque[prod_nome] = prod_quant
-            print(f'O produto {prod_nome} foi criado com a quantidade {prod_quant}')
+while True:
+    escolha = input(f"Escolha a sua opção de \'A\' - \'F\'\n{str_opcoes}").lower()
+    print('')
+    if escolha in ['a','b','c','d','e','f']:
+        if escolha == 'a':
+            if not criado:
+                estoque = {}
+                criado = True
+                print("Estoque foi criado")
+            else:
+                print("Opção inválida, o estoque já existe")
         
-    if escolha == 'c':
-        if not criado:
-            print("Primeiro você deve escolher a opção 'A' para criar o estoque")
-        else:
-            nomes = estoque.keys()
-            if len(nomes) > 0:
-                print('Os produtos que temos cadastrados são:')
-                for produto in nomes:
-                    print(produto)
-                consulta = input('Digite o nome do produto que deseja consultar: ').lower()
-                while consulta not in nomes:
+        if escolha == 'b':
+            if not criado:
+                print("Primeiro você deve escolher a opção 'A' para criar o estoque")
+            else:
+                # try:
+                #     x = input()
+                #     estoque.items()
+                # except NameError:
+                #     print("Primeiro você deve escolher a opção 'A' para criar o estoque")
+                # else:
+                #     pass
+                prod_nome = input("Insira o nome do produto a ser criado: ").lower()
+                while prod_nome in estoque.keys():
+                    prod_nome = input(f"Esse nome de produto '{prod_nome}' já existe" \
+                                    "\nInsira o nome de um #NOVO# produto para ser criado: ").lower()
+                prod_quant = float(input(f"Insira a quantidade de {prod_nome} que tem no estoque: "))
+                #produtos podem ser medidos em unidades de peso, não sao inteiros
+                estoque[prod_nome] = prod_quant
+                print(f'O produto {prod_nome} foi criado com a quantidade {prod_quant}')
+            
+        if escolha == 'c':
+            if not criado:
+                print("Primeiro você deve escolher a opção 'A' para criar o estoque")
+            else:
+                nomes = estoque.keys()
+                if len(nomes) > 0:
                     print('Os produtos que temos cadastrados são:')
                     for produto in nomes:
                         print(produto)
-                    consulta = input(f"Esse nome de produto '{consulta}' não existe" \
-                                  "\nDigite o nome do produto que deseja consultar: ').lower()")
-                print(f'O produto \'{consulta}\' tem {estoque[consulta]} no estoque')
-    #TODO testar o codigo de A,B e C
-    if escolha == 'd':
-        pass
+                    consulta = input('Digite o nome do produto que deseja consultar: ').lower()
+                    while consulta not in nomes:
+                        print('Os produtos que temos cadastrados são:')
+                        for produto in nomes:
+                            print(produto)
+                        consulta = input(f"Esse nome de produto '{consulta}' não existe!" \
+                                    "\nDigite o nome do produto que deseja consultar: ").lower()
+                    print(f'O produto \'{consulta}\' tem {estoque[consulta]} no estoque.')
+        #TODO testar o codigo de A,B e C
+
+        if escolha == 'd':
+            pass
+    
+    else:
+        print(f'Opção \'{escolha}\' inválida')
 
 
 
