@@ -6,7 +6,7 @@
 # Fahrenheit = (Celsius * 9/5) + 32
 # Celsius = (Fahrenheit - 32) * 5/9
 
-print('Conversor de temperaturas')
+print('EX1: Conversor de temperaturas')
 
 while True:
     print('Escolha a sua opção:')
@@ -42,6 +42,7 @@ for temperatura in temperaturas:
     if temperatura < menor:
         menor = temperatura
 media = soma/len(temperaturas)
+print('\nEX2: Comparação de temperaturas')
 print(f'A menor temperatura é de: {menor}')
 print(f'A maior temperatura é de: {maior}')
 print(f'A média das temperaturas da lista é de: {media}')
@@ -69,9 +70,9 @@ def listar_produtos():
         print(produto)
 
 criado = False
+print('\n\nEX3: Controle de estoque')
 while True:
-    escolha = input(f"\nEscolha a sua opção de \'A\' - \'F\'\n{opcoes}").lower()
-    print('')
+    escolha = input(f"\nEscolha a sua opção de \'A\' - \'F\'\n{opcoes}\n").lower()
     if escolha in ['a','b','c','d','e','f']:
         if escolha == 'a':
             if criado:
@@ -149,7 +150,7 @@ while True:
 # A - Unidade de medida destino da conversão.
 # B - Valor a ser convertido.
 # O retorno da função deve ser o valor calculado na conversão.
-
+print('\nEX4: Função conversor de temperaturas')
 def converter_temp(unidade_final, valor):
     if unidade_final == 'c':
         res = (valor - 32) * 5/9
