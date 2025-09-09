@@ -1,3 +1,10 @@
+Guia para resolução do desafio do módulo 1:
+A entrega do trabalho deve ser realizada na plataforma moodle até a data limite. Não serão aceitas entregas via whatsapp!
+Todas as soluções devem constar no mesmo arquivo .txt com o código comentado!
+Se funciona na sua máquina, precisa funcionar na minha! 
+Para solução dos exercícios não é necessária importação de nenhuma biblioteca externa!
+Cada questão vale 2.5 pontos. Caso não encontre uma solução para algum dos problemas, envie o código até onde conseguiu chegar e se possível eu considerarei alguma pontuação.
+
 # 1- Crie um programa que deve funcionar como um conversor de temperaturas. Ele deve conter um menu que permita ao usuário selecionar 2 opções:
 # Celsius para Fahrenheit
 # Fahrenheit para Celsius
