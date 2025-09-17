@@ -101,32 +101,68 @@ def limpa_tel(entrada, saida):
         return f"tente novamente o arquivo {entrada} não existe nessa pasta \n{err}"
     
     telefones = conteudo.splitlines()
+    telefones_limpos = []
+    # tipos de telefone:
+    #13 brdd912341234
+    #12 brdd12341234
+    #11 dd912341234
+    #10 dd12341234
+    #09 912341234
+    #08 12341234
+
     for telefone in telefones:
-        tel_mod = telefone.strip()
-        telefones_limpos = []
+        tel_mod = telefone.strip().lower()
+        if 'ramal' in tel_mod:
+            tel_mod = tel_mod.split('ramal')[0]
+        novo_tel = ''
         for char in tel_mod:
-            novo_tel = ''
             digitos = [str(i) for i in range(10)]
             if char in digitos:
                 novo_tel += char
-            # novo_tel = novo_tel + char
-           
-            # pp(novo_tel)
-        telefones_limpos.append(novo_tel)
-    pp(telefones_limpos)
-    return f""
-sys('cls')
+        
+        if len(novo_tel) in [8,9,10,11,12,13]:
+            telefones_limpos.append(novo_tel)
+        
+        else:
+            print(f'o telefone {novo_tel} não é válido e foi descartado')
+        
+    try:
+        with open(saida, 'w', encoding='utf-8') as arquivo:
+            for telefone in telefones_limpos:
+                arquivo.write(telefone+'\n')
+        return f'Arquivo {saida} criado com sucesso!'
 
-pp(limpa_tel(r'C:\Users\LACE 3\Desktop\aaaa\bolsa_futuro_joao\atividades\mod2\contatos.txt',1))
-# pp(limpa_tel('contatos.txt',1))
+    except Exception as err:
+        return f"tente novamente o arquivo {entrada} não existe nessa pasta \n{err}"
+    
+
+    
+
+# sys('cls')
+print(limpa_tel('contatos.txt','contatos_limpos.txt'))
 
 # 4 - Crie uma classe chamada "Filme". Siga as instruções na sequência:
 # A - Os atributos de instância a serem inicializados devem ser: titulo, diretor, ano_lancamento, duracao, nota_imdb. 
 # B - A classe deve conter um método chamado detalhes, que retorna uma string contendo o titulo do filme, o nome do diretor, o ano em que foi lançado, sua duracao e sua nota no imdb.
 # C - Crie pelo menos 3 instâncias para demonstrar o uso.
 
-# class Filme():
+class Filme():
+    def __init__(self, titulo, diretor, ano_lancamento, duracao, nota_imdb):
+        self.titulo = titulo
+        self.diretor = diretor
+        self.ano_lancamento = ano_lancamento
+        self.duracao = duracao
+        self.nota_imdb = nota_imdb
+    
+    def detalhes(self):
+        return f"{self.titulo =}\n{self.diretor =}\n{self.ano_lancamento =}\n{self.duracao =}\n{self.nota_imdb =}"
 
+django = Filme('Django Livre', 'Quentin Tarantino', 2012, '02h45', 8.4)
+crepusculo = Filme('Crepusculo', 'Catherine Hardwicke', 2008, '02h01', 5.2)
+tlotr = Filme('O Senhor dos Anéis: A Sociedade do Anel', 'Peter Jackson', 2001, '02h58', 8.8)
+# pp(django.detalhes())
+# pp(crepusculo.detalhes())
+# pp(tlotr.detalhes())
 
 # 5 - Crie uma classe chamada "Termometro". Siga as instruções na sequência.
 # A - O atributo de inicialização deve ser: temperatura_celsius.
@@ -141,3 +177,28 @@ pp(limpa_tel(r'C:\Users\LACE 3\Desktop\aaaa\bolsa_futuro_joao\atividades\mod2\co
 # Diminui em 50
 # Exibe temperatura
 # Converte para Farenheit e exibe na tela.
+
+class Termometro():
+    def __init__(self, temperatura_celsius):
+        self.temperatura_celsius = temperatura_celsius
+
+    def aumentar_temp(self, valor):
+        self.temperatura_celsius += valor
+    
+    def diminuir_temp(self, valor):
+        self.temperatura_celsius -= valor
+    
+    def temperatura_atual(self):
+        print(f"A temperatura atual é de {self.temperatura_celsius:.2f}ºC")
+    
+    def converte_farenheit(self) -> float:
+        # Fahrenheit = (Celsius * 9/5) + 32
+        return (self.temperatura_celsius * 9/5) + 32
+
+termometro = Termometro(25)
+termometro.temperatura_atual()
+termometro.aumentar_temp(25)
+termometro.temperatura_atual()
+termometro.diminuir_temp(50)
+termometro.temperatura_atual()
+print(f"A temperatura {termometro.temperatura_celsius:.2f}ºC convertida pra Farenheit é de {termometro.converte_farenheit():.2f}")
