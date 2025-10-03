@@ -13,6 +13,11 @@ class Computador:
 class Memoria:
     def __init__(self,capacidade):
         self.capacidade = capacidade
+        self.paginacao = Paginacao()
+    
+class Paginacao:
+    def __init__(self):
+        self.paginacao = True
 
 class Placa_Mae:
     def __init__(self,modelo):
@@ -21,3 +26,6 @@ class Placa_Mae:
 class SSD:
     def __init__(self,capacidade):
         self.capacidade = capacidade
+
+c = Computador(8,'Novasus', 1024)
+print(c.memoria.paginacao.paginacao)
