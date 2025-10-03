@@ -67,7 +67,8 @@ class Mago(Player):
         if self.get_mana() - custo < 0:
             return f'Você não tem a mana para lançar essa magia'
         self._mana -= custo
-        
+        return f'Você usou magia'
+    
     def magia_elemental(self):
         self._mana -= self._mana/2
         self._vida -= self._vida/10
@@ -122,3 +123,32 @@ gue = Guerreiro('g',200,50,10)
 # Na sequência crie uma função chamada renderizar_imagem, que deve receber como parâmetro uma lista de objetos das classes de formas, iterar sobre a lista e chamar o método desenhar de cada objeto contido na lista.
 
 # Para teste dessa função: crie uma lista contendo uma instância de Circulo, uma de Quadrado e outra de Triangulo. Passe essa lista como parâmetro na chamada da função renderizar_imagem.
+
+def renderizar_imagem(formas:list):
+    for forma in formas:
+        forma.desenhar()
+    
+
+class Circulo:
+    def __init__(self):
+        pass
+    
+    def desenhar(self):
+        print("Desenhando o Círculo")
+
+class Quadrado:
+    def __init__(self):
+        pass
+    
+    def desenhar(self):
+        print("Desenhando o Quadrado")
+
+class Triangulo:
+    def __init__(self):
+        pass
+    
+    def desenhar(self):
+        print("Desenhando o Triângulo")
+
+l = [Circulo(),Quadrado(),Triangulo()]
+renderizar_imagem(l)
