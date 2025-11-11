@@ -1,0 +1,20 @@
+Avaliação Git
+
+
+Crie um repositório git público na sua conta pessoal do GitHub. O repositório deve obedecer a estas orientações:
+
+1 - Nome do repositório deve ser "BFD_python_" + seu primeiro nome.
+2 - A Branch raiz deve ter o nome de "main".
+3 - O repositório deve conter um arquivo readme.
+4 - O repositório deve receber pelo menos 3 commits (pode ser mais também). Cada commit deve adicionar algum exercício/questão de prova resolvida em um arquivo único. Exemplo: O primeiro commit é um arquivo chamado exercício 1 que contém a solução de um dos exercícios do módulo 1 (caso queira organizar em pastas não tem problema nenhum).
+5 - O repositório deve conter mais de uma branch/pull request. (Caso você prossiga com o merge, não tem problema, só não apague a branch do GitHub)
+
+
+Alguns pontos importantes para se atentarem:
+
+1 - O repositório precisa estar em uma conta sua do github, não pode ser na de outra pessoa.
+2 - Atente-se para o fato de que o repositório precisa ser público, se ele for privado eu não conseguirei prosseguir com a avaliação.
+3 - Os commits precisam estar assinados pelo mesmo usuário da conta. Desconsiderarei commits efetuados por outros usuários que não o dono/criador do repositório, caso eles existam.
+4 - Para realização da entrega basta enviar o link completo para o repositório e aguardar a correção.
+
+Boa sorte!
