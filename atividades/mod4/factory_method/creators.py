@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from pagamentos import BaseGatewayPagamento, GatewayPix, GatewayCartaoCredito
+from pagamentos import BaseGatewayPagamento, GatewayPix, GatewayCartaoCredito, GatewayBoleto
 
 #Aqui temos a criação do nosso Criador Abstrato
 #Ele será nossa classe resposável pela lógica de "contrato" como vinhamos aprendendo
@@ -59,3 +59,15 @@ class CartaoCreator(BaseGatewayCreator):
         #return GatewayCartaoCredito(chave_api)
         print("CartaoCreator: Criando Gateway de Cartão.")
         return GatewayCartaoCredito()
+
+class BoletoCreator(BaseGatewayCreator):
+    """
+    Esta subclasse implementa o factory method para criar
+    e configurar um GatewayBoleto.
+    """
+    def criar_gateway(self) -> BaseGatewayPagamento:
+        #Aqui poderia ter outra lógica complexa:
+        #chave_api = config.get('API_KEY_BOLETO')
+        #return GatewayBoleto(chave_api)
+        print("BoletoCreator: Criando Gateway de Boleto.")
+        return GatewayBoleto()

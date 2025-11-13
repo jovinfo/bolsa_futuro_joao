@@ -1,6 +1,6 @@
 #Note que nosso arquivo loja.py agora só irá conter a importação das classes que irão fabricar objetos!
 
-from creators import BaseGatewayCreator, PixCreator, CartaoCreator
+from creators import BaseGatewayCreator, PixCreator, CartaoCreator, BoletoCreator
 
 #O cliente não precisa saber qual gateway existe.
 #Ele só precisa saber qual 'Criador' ele quer.
@@ -28,6 +28,10 @@ executar_compra_na_loja(creator_pix, 150.75)
 print("\n--- Cenário 2: Pagamento com Cartão ---")
 creator_cartao = CartaoCreator()
 executar_compra_na_loja(creator_cartao, 80.20)
+
+print("\n--- Cenário 3: Pagamento com Boleto ---")
+creator_cartao = BoletoCreator()
+executar_compra_na_loja(creator_cartao, 100.02)
 
 """
     Uma observação importante!

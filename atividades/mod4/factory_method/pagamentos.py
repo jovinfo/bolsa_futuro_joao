@@ -17,3 +17,8 @@ class GatewayCartaoCredito(BaseGatewayPagamento):
     def processar_pagamento(self, valor_total):
         print(f"Processando R$ {valor_total:.2f} via Cartão de Crédito. Conectando...")
         return {"status": "sucesso", "tipo": "cartao"}
+
+class GatewayBoleto(BaseGatewayPagamento):
+    def processar_pagamento(self, valor_total):
+        print(f"Processando R$ {valor_total:.2f} via Boleto. Gerando Boleto...")
+        return {"status": "sucesso", "tipo": "boleto"}
