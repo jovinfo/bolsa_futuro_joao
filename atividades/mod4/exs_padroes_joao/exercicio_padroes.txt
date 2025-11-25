@@ -1,0 +1,90 @@
+1 - Praticando Classes e Métodos Abstratos!
+
+O objetivo deste exercício é usar uma classe abstrata para definir um "algoritmo mestre" e forçaremos as subclasses a implementar aenas os passos específicos desse algoritmo!
+
+ Você está criando um serviço que processa diferentes tipos de arquivos de dados (ex: CSV e TXT) para importação em um banco de dados. O fluxo de trabalho é sempre o mesmo:
+ 
+ - Ler o arquivo
+ - Analisar o conteúdo
+ - Salvar os dados no banco
+ 
+ A forma de ler e analisar é totalmente diferente para cada tipo de arquivo, mas o método de salvar no banco é idêntico e pode ser compartilhado.
+ 
+ Para executar esta tarefa:
+ 
+ Crie uma classe abstrata chamada `ProcessadorDeArquivo`.
+    
+2. Defina dois métodos abstratos:
+    
+    - lerArquivo(caminho): Retorna o conteúdo do arquivo (ex: uma string).
+        
+    - analisarConteudo(conteudo): Recebe o conteúdo e retorna uma lista de "registros"
+        
+3. Ainda dentro da classe ProcessadorDeArquivo, defina um método concreto (não-abstrato) chamado `salvarNoBanco(registros)`. Este método deve apenas simular o salvamento, iterando sobre os registros e imprimindo algo como "Salvando registro [registro] no DB...".
+    
+4. Crie o método principal: um método concreto chamado `processar(caminho)`. Este método deve:
+    
+    - Chamar `lerArquivo(caminho)` para obter e RETORNAR o conteúdo.
+        
+    - Chamar `analisarConteudo(conteudo)` com o resultado do método anterior para obter os registros.
+        
+    - Chamar `salvarNoBanco(registros)` com os registros analisados pelo método anterior.
+        
+    - Retornar um status (ex: "Processados X registros.").
+        
+5. Crie duas classes concretas: `ProcessadorCSV` e `ProcessadorTXT`. Nesta etapa reflita: Elas precisam herdar alguma coisa?
+    
+6. Implemente os métodos abstratos (`lerArquivo` e `analisarConteudo`) em cada uma com uma lógica simulada. 
+    
+    - `ProcessadorCSV.analisarConteudo()` deve simular a quebra de uma string por vírgulas.
+        
+    - `ProcessadorTXT.analisarConteudo()` deve simular o parsing de um objeto TXT.
+        
+7. No seu código cliente, instancie um `ProcessadorCSV` e chame apenas o método `processar()`. Depois, faça o mesmo com `ProcessadorTXT`.
+
+Conseguiu fazer todo o exercício? Reflita sobre os dois seguintes pontos:
+1 - Você fez tudo no mesmo arquivo? Se sim, como você poderia dividir em mais de um arquivo para que sua aplicação fique mais organizada?
+2 - Pesquise sobre Template Method, este foi o padrão implementado aqui?
+
+=================================================================================================================
+
+2 - Decorators!
+
+Você tem um sistema que por padrão envia apenas e-mails! Você precisa adicionar opcionalmente a capacidade de enviar também por SMS ou Whatsapp!
+
+1 - Crie uma função enviar_email(email) com uma lógica simulada de envio de e-mail.
+
+2 - Crie então dois decorators sms e whatsapp. Cada um deve implementar a sua respectiva lógica simulada de envio!
+
+3 - Teste a implementação dos dois decorators com a função enviar_email!
+
+Conseguiu fazer todo o exercício? Reflita sobre os seguinte pontos:
+1 - Supondo que é o usuário que escolhe como será contactado, vale a pena refatorar a função enviar_email, apenas para enviar() e então implementar um 3 decorator email?
+2 - Suponha que os métodos de envio continuem crescendo (slack, teams, telegram, etc) faz sentido continuar criando decorators? Caso sua resposta seja não: qual outro padrão você implementaria?
+
+====================================================================================================================
+
+3 - Factory Method (Adaptado diretamente do refactoring guru!)
+
+Você está desenvolvendo o backend de uma empresa de logística. Inicialmente, a empresa fazia apenas entregas terrestres (Caminhão). Agora, ela expandiu para entregas marítimas (Navio). O código atual está cheio de if type == 'caminhao': ... else ..., o que torna difícil adicionar novos tipos de transporte (como Aéreo ou Ferroviário) no futuro.
+
+O objetivo aqui é implementar o padrão Factory Method para que o código cliente (a aplicação) não precise saber se está criando um caminhão ou um navio, delegando essa responsabilidade para subclasses criadoras.
+
+1 - Crie uma classe abstrata chamada Transporte com um método abstrato entregar().
+
+2 - Crie duas classes que herdam de Transporte: 
+	- Caminhao e Navio. 
+	- Implemente o método entregar() em cada uma com uma mensagem de lógica diferente.
+
+3 - Crie uma classe abstrata Logistica que deve conter:
+	- Um método abstrato cria_transporte() (Este é nosso factory method) 
+	- Um método concreto planejar_entrega(). Este método deve chamar cria_transporte() para obter um	***OBJETO*** e depois chamar o método entregar() desse objeto!
+	
+4 - Crie duas classes que herdam Logistica:
+	- LogisticaTerreste e LogisiticaMaritima.
+	- Cada uma deve implementar o cria_transporte() retornando a instância correta Caminhao ou Navio.
+
+Execute alguns códigos para teste!
+
+Caso você tenha feito todo exercício, reflita: 
+1 - Você construiu todo o código no mesmo arquivo? Se sim, como você poderia repartir em vários arquivos para que sua aplicação fique organizada? Consulte nossos exemplos da aula para refletir sobre o assunto.
