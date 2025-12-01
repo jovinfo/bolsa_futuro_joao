@@ -35,25 +35,5 @@ mail = NotificadorEmail()
 zap = NotificadorZap()
 
 cliente_enviar(mail, "Mensagem do EMAIL pro aluno")
+print('')
 cliente_enviar(zap, "Oi aluno do WHatsapp")
-    
-"""Para resolver este problema, você deve implementar o código seguindo os passos abaixo:
-1. Padrão Template Method
-• Crie uma classe abstrata chamada Notificador.
-• Implemente nela o método concreto postar_aviso(mensagem). Ele deve:
-1. Concatenar a string " | Ass: Bolsa Futuro Digital" ao final da mensagem recebida.
-2. Chamar o método enviar(mensagem_formatada) passando a nova mensagem.
-• Defina o método enviar como abstrato (@abstractmethod).
-• Crie duas classes filhas concretas:
-1. NotificadorEmail: O método enviar deve imprimir: Enviando E-MAIL: [texto].
-2. NotificadorZap: O método enviar deve imprimir: Enviando ZAP: [texto].
-2. Padrão Decorator
-• Crie um decorator de função chamado auditoria.
-• Este decorator deve envolver a execução da função decorada.
-• Antes de executar a função, imprima: "--- Início do Processo ---".
-• Após executar a função, imprima: "--- Fim do Processo ---".
-3. Código Cliente
-• Crie uma função chamada cliente_enviar(notificador, mensagem).
-• Decore esta função com @auditoria.
-• Dentro dela, chame o método postar_aviso do objeto notificador recebido.
-• Instancie as classes concretas e faça um teste de envio para cada uma"""
