@@ -1,0 +1,4 @@
+django-admin startproject brechonline
+cd .\brechonline\
+python manage.py startapp loja
+python manage.py runserver

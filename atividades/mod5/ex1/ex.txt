@@ -1,0 +1,29 @@
+Exercício:
+Imagine que você foi contratado como desenvolvedor junior por uma empresa de pequeno porte que
+ainda não tem presença online. Sua primeira tarefa é configurar o projeto inicial e o primeiro aplicativo
+que conterá a página da companhia.
+
+Utilizando o Django e sua linha de comando realize as seguintes etapas:
+
+1. Crie um novo projeto Django e dê a ele o nome da empresa.
+
+2. Crie um novo app dentro do projeto e dê a ele um nome conectado a sua funcionalidade.
+
+3. Faça a configuração de rotas:
+3.1. Configure a rota principal do app para ser acessível através da urls.py do
+PROJETO.
+3.2. Dentro do app, crie o arquivo urls.py e defina 3 rotas adicionais
+3.2.1. Uma rota para a página inicial do app (/home), que chama uma view chamada
+“home”.
+3.2.2. Uma rota para a página de serviços do app (/servicos), que chama uma view
+chamada “servicos”.
+3.2.3. Uma rota para a página fale conosco (/fale_conosco), que chama uma view
+chamada “fale_conosco”
+4. Após criar as rotas, crie as views necessárias dentro do arquivo views.py (lembre-se que só os
+apps terão este arquivo). Cada função deve retornar um HttpResponse simples, apenas
+descrevendo a página.
+Devem ser entregues 4 arquivos:
+• Uma lista dos comandos de terminal utilizados para criar o projeto, o app e testar o servidor.
+• O arquivo do “seu_projeto/urls.py”
+• O arquivo do “seu_app/urls.py”
+• O arquivo do “seu_app/views.py”
