@@ -1,0 +1,9 @@
+mvp-fastapi-mongo/
+│
+├── app/
+│   ├── main.py
+│   ├── database.py
+│   └── models.py
+│
+├── requirements.txt
+└── README.md

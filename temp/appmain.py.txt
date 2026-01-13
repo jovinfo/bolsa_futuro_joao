@@ -1,0 +1,14 @@
+from fastapi import FastAPI
+from app.database import collection
+from app.models import Match
+
+app = FastAPI(title="MVP Game Match API")
+
+@app.get("/")
+def read_root():
+    return {"status": "API rodando com sucesso"}
+
+@app.post("/matches", status_code=201)
+def create_match(match: Match):
+    collection.insert_one(match.dict())
+    return {"message": "Partida salva com sucesso"}
